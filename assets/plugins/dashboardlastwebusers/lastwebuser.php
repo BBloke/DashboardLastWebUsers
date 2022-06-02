@@ -1,6 +1,6 @@
 <?php
 /******
-dashboardlastwebusers  3.2.2 RC
+dashboardlastwebusers
 
 @properties &wdgVisibility=Show widget for:;menu;All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly;All &ThisRole=Show only to this role id:;string;;;enter the role id &ThisUser=Show only to this username:;string;;;enter the username  &wdgTitle= Widget Title:;string;Last Webuser  &wdgicon= widget icon:;string;fa-users  &wdgposition=widget position:;list;1,2,3,4,5,6,7,8,9,10;1 &wdgsizex=widget x size:;list;12,6,4,3;12 &LastUsersLimit=How many users:;string;10 &EnablePopup= Enable popup icon:;list;no,yes;yes &EnablePhoto= Enable user photo:;list;no,yes;no &showDeleteButton= Show Delete Button:;list;yes,no;yes &WidgetID= Unique Widget ID:;string;LastWebUserBox &HeadBG= Widget Title Background color:;string; &HeadColor= Widget title color:;string;
 ****
@@ -8,13 +8,15 @@ dashboardlastwebusers  3.2.2 RC
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 // get manager role
 // Added for php v8.0
-$HeadColor = '';
-$HeadBG = '';
-$thPhoto = '';
-$LastUsersA = '';
-$ThisUser = '';
-$ThisRole = '';
-$jsOutput = '';
+// When plugin variables are blank then an error occurs. 
+// This prevents blank variables from throwing an error
+$LastUsersA = isset($LastUsersA) ? $LastUsersA : '';
+$jsOutput = isset($jsOutput) ? $jsOutput : '';
+$thPhoto = isset($thPhoto) ? $thPhoto : '';
+$HeadColor = isset($HeadColor) ? $HeadColor : '';
+$HeadBG = isset($HeadBG) ? $HeadBG : '';
+$ThisRole = isset($ThisRole) ? $ThisRole : '';
+$ThisUser = isset($ThisUser) ? $ThisUser : '';
 
 $internalKey = $modx->getLoginUserID();
 $sid = $modx->sid;
