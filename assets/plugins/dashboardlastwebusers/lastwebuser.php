@@ -7,6 +7,12 @@ dashboardlastwebusers
 */
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 // get manager role
+
+$internalKey = $modx->getLoginUserID();
+$sid = $modx->sid;
+$role = $_SESSION['mgrRole'];
+$user = $_SESSION['mgrShortname'];
+
 // Added for php v8.0
 // When plugin variables are blank then an error occurs. 
 // This prevents blank variables from throwing an error
@@ -18,10 +24,6 @@ $HeadBG = isset($HeadBG) ? $HeadBG : '';
 $ThisRole = isset($ThisRole) ? $ThisRole : '';
 $ThisUser = isset($ThisUser) ? $ThisUser : '';
 
-$internalKey = $modx->getLoginUserID();
-$sid = $modx->sid;
-$role = $_SESSION['mgrRole'];
-$user = $_SESSION['mgrShortname'];
 // show widget only to Admin role 1
 if(($role!=1) AND ($wdgVisibility == 'AdminOnly')) {}
 // show widget to all manager users excluded Admin role 1
